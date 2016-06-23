@@ -20,7 +20,7 @@ Register this plugin in your Pageflow initializer.
 
 ```
 # config/initializers/pageflow.rb
-config.plugin(Scrollytelling::Piwik::Plugin.new)
+config.plugin(Scrollytelling::Piwik::Plugin.new url: "//example.com/analytics/", site_id: 1)
 ```
 
 Furthermore after installing any Pageflow plugin it's a good idea to change your asset version. This will invalidate all server-side cache, most notably the cache that `i18n-js` uses to render the editor UI.
