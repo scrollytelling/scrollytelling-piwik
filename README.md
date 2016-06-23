@@ -1,8 +1,6 @@
 # Scrollytelling::Piwik
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/scrollytelling/piwik`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This [Pageflow](https://github.com/codevise/pageflow) Plugin will render the [Piwik](https://piwik.org) JavaScript snippet in your stories. This allows you to have your own analytics engine and not rely on third parties. At [Scrollytelling](https://www.scrollytelling.io) we use this because we wish not having to show a cookie warning. Naturally, we also do not wish to track our visitors for anything more than just counting them.
 
 ## Installation
 
@@ -12,17 +10,27 @@ Add this line to your application's Gemfile:
 gem 'scrollytelling-piwik'
 ```
 
-And then execute:
+Bundle the plugin with your application by typing this on the command line:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install scrollytelling-piwik
-
 ## Usage
 
-TODO: Write usage instructions here
+Register this plugin in your Pageflow initializer.
+
+```
+# config/initializers/pageflow.rb
+config.plugin(Scrollytelling::Piwik::Plugin.new)
+```
+
+Furthermore after installing any Pageflow plugin it's a good idea to change your asset version. This will invalidate all server-side cache, most notably the cache that `i18n-js` uses to render the editor UI.
+
+```
+# config/initializers/assets.rb
+Rails.application.config.assets.version = 'x.x.x'
+```
+
+Then restart your application server.
 
 ## Development
 
